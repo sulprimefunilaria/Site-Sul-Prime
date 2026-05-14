@@ -72,12 +72,6 @@ h3 {
     margin: 0 auto;
 }
 
-@media (max-width: 426px) {
-    .container {
-        width: 375px;
-    }
-}
-
 section {
     padding: 6rem 0;
 }
@@ -155,6 +149,16 @@ section {
 .wa-float svg {
     width: 30px;
     height: 30px;
+}
+
+@media (max-width: 426px) {
+    .container {
+        width: 375px;
+    }
+
+    .btn-primary {
+        padding: 1rem;
+    }
 }
 
 /* ═══════════════════════════
@@ -472,6 +476,27 @@ header .hero-img .logo-animada .logo-estatica img {
     font-weight: 400;
 }
 
+@media (max-width:426px) {
+    #dor .header, #dor .conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #dor .titulo, #dor .header p, #dor .intro {
+        width: 100%;
+    }
+
+    #dor .itens .item .detalhes {
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    #dor .conteudo>img {
+        width: 100%;
+        height: auto;
+    }
+}
+
 /* ═══════════════════════════
     SERVIÇOS
 ═══════════════════════════ */
@@ -555,6 +580,15 @@ header .hero-img .logo-animada .logo-estatica img {
     font-size: 0.88rem;
     color: var(--silver-dark);
     line-height: 1.6;
+}
+
+@media (max-width:426px) {
+    #servicos .titulo {
+        width: 100%;
+    }
+    #servicos .cards {
+        flex-direction: column;
+    }
 }
 
 /* ═══════════════════════════
@@ -675,6 +709,19 @@ header .hero-img .logo-animada .logo-estatica img {
     line-height: 1.6;
 }
 
+@media (max-width:426px) {
+    #diferenciais .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    #diferenciais .card {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
 /* ═══════════════════════════
     SOBRE
 ═══════════════════════════ */
@@ -772,6 +819,40 @@ header .hero-img .logo-animada .logo-estatica img {
     gap: 1.5rem;
 }
 
+@media (max-width:426px) {
+    #sobre .container {
+        flex-direction: column-reverse;
+        gap: 3rem;
+    }
+
+    #sobre .conteudo {
+        width: 100%;
+        gap: 2rem;
+    }
+
+    #sobre .destaques {
+        flex-direction: column;
+    }
+
+    #sobre .imgs {
+        width: 100%;
+        height: auto;
+        gap: 0;
+    }
+
+    #sobre .imgs img {
+        width: 100%;
+        height: auto;
+        object-position: center !important;
+    }
+
+    #sobre .imgs img:first-of-type {
+        position: relative;
+        left: 0;
+        border: none;
+    }
+}
+
 /* ═══════════════════════════
     MEDOS / OBJEÇÕES
 ═══════════════════════════ */
@@ -848,6 +929,12 @@ header .hero-img .logo-animada .logo-estatica img {
     stroke: var(--gold);
     fill: none;
     stroke-width: 2;
+}
+
+@media (max-width:426px) {
+    #garantias .garantias {
+        flex-direction: column;
+    }
 }
 
 /* ═══════════════════════════
@@ -1173,6 +1260,12 @@ header .hero-img .logo-animada .logo-estatica img {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+@media (max-width:426px) {
+    #cta-final h2 {
+        width: 100%;
+    }
 }
 
 /* ═══════════════════════════
