@@ -78,7 +78,10 @@ section {
 
 /* ── BUTTONS ── */
 .btn-primary {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
     background: var(--gold);
     color: var(--onyx);
     font-family: 'Inter', sans-serif;
@@ -87,7 +90,6 @@ section {
     letter-spacing: 0.04em;
     padding: 1rem 2.4rem;
     border: none;
-    border-radius: var(--radius);
     text-decoration: none;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
@@ -108,7 +110,6 @@ section {
     letter-spacing: 0.04em;
     padding: 0.95rem 2.2rem;
     border: 1px solid var(--gold);
-    border-radius: var(--radius);
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s;
@@ -218,6 +219,10 @@ header h1 span {
     gap: 0;
 }
 
+header h1 span:last-child:not(.proof-item span) {
+    color: var(--gold-light);
+}
+
 header h1 span:first-child small {
     width: 360px;
 }
@@ -247,21 +252,24 @@ header .proof-item .number {
     font-family: 'Inter', sans-serif;
     font-size: 1.9rem;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--gold-light);
     line-height: 1;
 }
 
 header .proof-item .desc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: .2rem;
     font-size: 0.8rem;
     color: var(--silver-dark);
     letter-spacing: 0.05em;
     margin-top: 0.3rem;
 }
 
-header .proof-divider {
-    width: 1px;
-    background: var(--onyx-mid);
-    align-self: stretch;
+header .proof-item .desc span {
+    width: fit-content;
+    font-size: 1rem;
 }
 
 header .hero-img {
@@ -399,7 +407,6 @@ header .hero-img .logo-animada .logo-estatica img {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
-    border-radius: .5rem;
     position: relative;
 }
 
@@ -467,7 +474,7 @@ header .hero-img .logo-animada .logo-estatica img {
     width: 44px;
     height: 44px;
     border-radius: 100px;
-    border: 1px solid var(--text-muted);
+    border: 1px solid var(--silver-mid);
 }
 
 #dor .itens .item p {
@@ -521,7 +528,7 @@ header .hero-img .logo-animada .logo-estatica img {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 18rem;
+    gap: 19rem;
 }
 
 #servicos .conteudo img {
@@ -530,6 +537,7 @@ header .hero-img .logo-animada .logo-estatica img {
     height: 100%;
     object-fit: contain;
     pointer-events: none;
+    object-position: 0 245px;
 }
 
 
@@ -540,6 +548,7 @@ header .hero-img .logo-animada .logo-estatica img {
 }
 
 #servicos .card {
+    width: 100%;
     border: 1px solid var(--gold);
     padding: 2rem;
 }
@@ -560,12 +569,9 @@ header .hero-img .logo-animada .logo-estatica img {
     margin-bottom: 1.2rem;
 }
 
-#servicos .icon svg {
-    width: 32px;
-    height: 32px;
-    stroke: var(--gold);
-    fill: none;
-    stroke-width: 1.8;
+#servicos .icon span {
+    font-size: 24px;
+    color: var(--gold);
 }
 
 #servicos .card h3 {
@@ -747,7 +753,7 @@ header .hero-img .logo-animada .logo-estatica img {
 
 #sobre .imgs {
     width: 540px;
-    height: 655px;
+    height: 600px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -757,7 +763,7 @@ header .hero-img .logo-animada .logo-estatica img {
 
 #sobre .imgs img {
     position: relative;
-    width: 98%;
+    width: 97%;
     height: 400px;
     object-fit: cover;
     object-position: 0 -120px;
@@ -781,14 +787,21 @@ header .hero-img .logo-animada .logo-estatica img {
 
 #sobre .destaque {
     width: 100%;
-    height: fit-content;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    gap: .5rem;
+    gap: .15rem;
     padding: 1.5rem 1rem;
     background-color: var(--silver-mid);
     color: var(--text-muted);
     font-size: .95rem;
+}
+
+#sobre .destaque .titulo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .25rem;
 }
 
 #sobre .destaque strong {
@@ -797,13 +810,9 @@ header .hero-img .logo-animada .logo-estatica img {
     text-transform: uppercase;
 }
 
-#sobre .destaque .decoracao {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    flex-shrink: 0;
-    margin-top: 8px;
+#sobre .destaque .material-icons-outlined {
+    font-size: 1.2rem;
+    color: var(--gold);
 }
 
 #sobre .conteudo {
@@ -923,12 +932,9 @@ header .hero-img .logo-animada .logo-estatica img {
     justify-content: center;
 }
 
-#garantias .icon svg {
-    width: 32px;
-    height: 32px;
-    stroke: var(--gold);
-    fill: none;
-    stroke-width: 2;
+#garantias .icon span {
+    font-size: 24px;
+    color: var(--gold);
 }
 
 @media (max-width:426px) {
@@ -1220,18 +1226,29 @@ header .hero-img .logo-animada .logo-estatica img {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 #marcas .pill {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
     background: #fff;
     border: 1px solid var(--silver-mid);
-    padding: 0.7rem 1.6rem;
+    padding: .5rem 1rem;
     font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-muted);
     letter-spacing: 0.04em;
 }
+
+#marcas .pill img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
 
 /* ═══════════════════════════
     CTA FINAL
@@ -1311,7 +1328,10 @@ footer {
 
 .footer-col a,
 .footer-col p {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
     font-size: 0.88rem;
     color: var(--silver-dark);
     text-decoration: none;
