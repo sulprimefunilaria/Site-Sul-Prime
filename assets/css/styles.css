@@ -618,6 +618,7 @@ header .hero-img .logo-animada .logo-estatica img {
     object-fit: contain;
     pointer-events: none;
     object-position: 0 245px;
+    z-index: 2;
 }
 
 
@@ -625,6 +626,7 @@ header .hero-img .logo-animada .logo-estatica img {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    z-index: 0;
 }
 
 #servicos .card {
