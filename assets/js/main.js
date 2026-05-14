@@ -47,6 +47,27 @@ const reviews = [
     stars: 5,
     text: 'Está foi a segunda vez q levei meu carro na Sul Prime e fiquei satisfeita e feliz com o serviço. O preço é justo, o atendimento humanizado e eficiente, e o serviço ficou nota dez nas duas ocasiões. O carro foi entregue rapidamente e ainda lavado e o interior higienizado. Eu adorei. Confio neles e vou levar meu carro sempre lá quando precisar. Obrigada sul prime! Parabéns e continuem assim 💙',
     source: 'Google Meu Negócio'
+  },
+  {
+    name: 'Eduardo Araujo',
+    photo: 'assets/img/avaliacoes/Eduardo Araujo.png',
+    stars: 5,
+    text: 'Meu Onix estava com uma grande avaria no parachoque traseiro. Arranhões e a pintura bastante prejudicada devido uma colisão. E o parachoque saiu um pouco do lugar também. O Leandro e sua equipe foram extremamente atenciosos, fizeram um orçamento muito justo e um serviço de excelência, com inclusive uma lavagem de cortesia. Conheci a empresa pelas avaliações do Google e também recomendo! O resultado ficou muito bom dentro de poucos dias.',
+    source: 'Google Meu Negócio'
+  },
+  {
+    name: 'Maria Marta Ferreira Lima',
+    photo: 'assets/img/avaliacoes/Maria Marta Ferreira Lima.png',
+    stars: 5,
+    text: 'Uma equipe nota 10000000! Um excelente trabalho! Profissionalismo!!! Amei e indico sempre! Obrigada meus queridos pelo lindo trabalho feito no meu JEEP, meu tomatinho 🍅 …',
+    source: 'Google Meu Negócio'
+  },
+  {
+    name: 'Philipe Valdeno Damazo',
+    photo: 'assets/img/avaliacoes/Philipe Valdeno Damazo.png',
+    stars: 5,
+    text: 'Atendimento rápido e cortez, agilidade e detalhamento do orçamento. Serviço rápido e o conserto da porta ficou muito bem feito. Preço justo e trabalho muito bom. Parabéns a toda a equipe.',
+    source: 'Google Meu Negócio'
   }
 ];
 
@@ -317,5 +338,77 @@ document.addEventListener('DOMContentLoaded', async function () {
   setupCarouselControls();
   setupPanGestures();
   startAutoSlide();
+  setupScrollReveal();
   console.log('assets/js/main.js carregado');
 });
+
+// Scroll reveal: add .reveal to key elements and toggle .in-view when visible
+function setupScrollReveal() {
+  if (typeof window === 'undefined') return;
+
+  // respect reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const selectors = [
+    'header .container > *',
+    'section .container > *',
+    '#servicos .card',
+    '#diferenciais .card',
+    '#garantias .card',
+    '.depo-card',
+    '.numeros-grid .numero-item'
+  ];
+
+  const elements = new Set();
+  selectors.forEach((sel) => {
+    document.querySelectorAll(sel).forEach((el) => elements.add(el));
+  });
+
+  // apply initial reveal state unless reduced motion
+  elements.forEach((el) => {
+    if (prefersReduced) {
+      el.classList.remove('reveal');
+      el.classList.add('in-view');
+      return;
+    }
+    el.classList.add('reveal');
+  });
+
+  if (prefersReduced) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.12
+  };
+
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const target = entry.target;
+      // find child elements that were marked for reveal (including the target itself)
+      const children = [target].concat(Array.from(target.querySelectorAll('.reveal')));
+      // dedupe and filter only those with .reveal and not already in-view
+      const toReveal = Array.from(new Set(children)).filter((c) => c.classList && c.classList.contains('reveal') && !c.classList.contains('in-view'));
+      toReveal.forEach((el, i) => {
+        // staggered delay (small, performant)
+        el.style.transitionDelay = `${Math.min(i * 70, 420)}ms`;
+        requestAnimationFrame(() => el.classList.add('in-view'));
+        // cleanup delay style after animation completes
+        setTimeout(() => { el.style.transitionDelay = ''; }, 800);
+      });
+      // stop observing this target once revealed
+      obs.unobserve(target);
+    });
+  }, observerOptions);
+
+  // Observe parent containers to trigger reveal of their children
+  const parentsToObserve = new Set();
+  elements.forEach((el) => {
+    // observe the closest section-like ancestor to batch reveals
+    const parent = el.closest('section, header, footer') || el.parentElement;
+    if (parent) parentsToObserve.add(parent);
+  });
+
+  parentsToObserve.forEach((p) => revealObserver.observe(p));
+}

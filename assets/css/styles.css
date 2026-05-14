@@ -558,6 +558,91 @@ header .hero-img .logo-animada .logo-estatica img {
     cursor: pointer;
 }
 
+/* Unified card hover + focus (accessible contrast) */
+#servicos .card,
+#diferenciais .card,
+#garantias .card,
+.depo-card {
+    transition: background 200ms ease, transform 150ms ease, box-shadow 180ms ease;
+    cursor: pointer;
+}
+
+#servicos .card:hover,
+#diferenciais .card:hover,
+#garantias .card:hover,
+.depo-card:hover,
+#servicos .card:focus-visible,
+#diferenciais .card:focus-visible,
+#garantias .card:focus-visible,
+.depo-card:focus-visible {
+    background-color: var(--gold-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(10, 20, 30, 0.45);
+    outline: none;
+}
+
+#servicos .card:hover h3,
+#diferenciais .card:hover h3,
+#garantias .card:hover h3,
+.depo-card:hover h3,
+#servicos .card:focus-visible h3,
+#diferenciais .card:focus-visible h3,
+#garantias .card:focus-visible h3,
+.depo-card:focus-visible h3 {
+    color: var(--text-light);
+}
+
+#servicos .card:hover p,
+#diferenciais .card:hover p,
+#garantias .card:hover p,
+.depo-card:hover p,
+#servicos .card:focus-visible p,
+#diferenciais .card:focus-visible p,
+#garantias .card:focus-visible p,
+.depo-card:focus-visible p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#servicos .card:hover .icon span,
+#diferenciais .card:hover .icon span,
+#garantias .card:hover .icon span,
+.depo-card:hover .icon span,
+#servicos .card:focus-visible .icon span,
+#diferenciais .card:focus-visible .icon span,
+#garantias .card:focus-visible .icon span,
+.depo-card:focus-visible .icon span {
+    color: var(--text-light);
+}
+
+/* Keyboard accessibility: visible focus ring */
+#servicos .card:focus-visible,
+#diferenciais .card:focus-visible,
+#garantias .card:focus-visible,
+.depo-card:focus-visible {
+    box-shadow: 0 0 0 4px rgba(43, 132, 198, 0.12), 0 10px 28px rgba(10, 20, 30, 0.35);
+}
+
+/* Entrance animations (performant: only transform + opacity) */
+.reveal {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+    will-change: opacity, transform;
+    transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+}
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Reduce motion preference: disable animations */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
+
 #servicos .icon {
     width: 64px;
     height: 64px;
@@ -898,6 +983,8 @@ header .hero-img .logo-animada .logo-estatica img {
     top: 50%;
     left: 50%;
     transform: translate(-57%, -50%);
+    z-index: 4;
+    pointer-events: none;
 }
 
 #garantias .card {
