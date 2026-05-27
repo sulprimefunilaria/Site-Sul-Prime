@@ -136,7 +136,7 @@ section {
     right: 2rem;
     z-index: 999;
     background: #25D366;
-    color: #fff;
+    color: var(--silver);
     width: 58px;
     height: 58px;
     border-radius: 50%;
@@ -216,15 +216,23 @@ header .label::after {
     content: '';
 }
 
-header h1 {
+header .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .9rem;
+}
+
+header .hero-title h1 {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    color: #fff;
+    color: var(--silver);
 }
 
-header h1 span {
+header .hero-title h1 span:not(.proof-item span) {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -233,20 +241,30 @@ header h1 span {
     gap: 0;
 }
 
-header h1 span:last-child:not(.proof-item span) {
+header .hero-title h1 span:last-child:not(.proof-item span) {
     color: var(--gold-light);
+    justify-content: flex-end;
 }
 
-header h1 span:first-child small {
+/* header h1 span:first-child small {
     width: 360px;
-}
+} */
 
-header h1 span small {
+/* header h1 span small {
     font-size: .9rem;
     text-transform: none;
     color: var(--silver-dark);
     font-weight: 400;
     width: 300px;
+} */
+
+header .hero-title p {
+    width: 100%;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--silver-dark);    
 }
 
 header .hero-cta-group {
@@ -341,7 +359,7 @@ header .hero-img .logo-animada .logo-estatica {
     position: relative;
     width: 64px;
     height: 64px;
-    background: #fff;
+    background: var(--silver);
     border-radius: 120px;
     padding: .7rem;
     z-index: 2;
@@ -367,23 +385,25 @@ header .hero-img .logo-animada .logo-estatica img {
         bottom: auto;
     }
 
+    header .hero-title {
+        padding-top: 2rem;
+    }
+    
     header h1 span {
-        flex-direction: column-reverse;
+        position: relative;
         gap: 1rem;
         text-align: left;
-    }
-
-    header h1 span:first-child small {
-        width: 100%;
     }
 
     header .proof-item {
         width: 100%;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-end;
         gap: .5rem;
         margin-top: 1rem;
+        position: absolute;
+        bottom: calc(100% + 1rem);
+        left: 0;
     }
 
     header .proof-item .number {
@@ -394,6 +414,11 @@ header .hero-img .logo-animada .logo-estatica img {
         width: fit-content;
         font-size: .65rem;
     }
+
+    header .hero-title p {
+        text-transform: none;
+        font-size: 1rem;
+    }
     
 }
 
@@ -401,7 +426,7 @@ header .hero-img .logo-animada .logo-estatica img {
 /* ═══════════════════════════
     DOR — SEÇÃO ESPELHO
 ═══════════════════════════ */
-#dor {
+/* #dor {
     background: var(--silver);
     color: var(--text-dark);
     padding: 5rem 0;
@@ -582,7 +607,7 @@ header .hero-img .logo-animada .logo-estatica img {
         width: 100%;
         height: auto;
     }
-}
+} */
 
 /* ═══════════════════════════
     SERVIÇOS
@@ -608,10 +633,10 @@ header .hero-img .logo-animada .logo-estatica img {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 19rem;
+    gap: 1rem;
 }
 
-#servicos .conteudo img {
+/* #servicos .conteudo img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -619,7 +644,7 @@ header .hero-img .logo-animada .logo-estatica img {
     pointer-events: none;
     object-position: 0 245px;
     z-index: 2;
-}
+} */
 
 
 #servicos .cards {
@@ -745,7 +770,7 @@ header .hero-img .logo-animada .logo-estatica img {
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    color: #fff;
+    color: var(--silver);
     margin-bottom: 0.5rem;
 }
 
@@ -768,10 +793,10 @@ header .hero-img .logo-animada .logo-estatica img {
         gap: 1rem;
     }
 
-    #servicos .conteudo img {
+    /* #servicos .conteudo img {
         position: relative;
         object-position: 0;
-    }
+    } */
 }
 
 /* ═══════════════════════════
@@ -802,7 +827,7 @@ header .hero-img .logo-animada .logo-estatica img {
     font-family: 'Inter', sans-serif;
     font-size: 3rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--silver);
     line-height: 1;
 }
 
@@ -816,6 +841,13 @@ header .hero-img .logo-animada .logo-estatica img {
 }
 
 @media (max-width:426px) {
+    .numeros-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .numero-item .big {
         font-size: 2rem;
     }
@@ -844,6 +876,10 @@ header .hero-img .logo-animada .logo-estatica img {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+#diferenciais .header .titulo {
+    max-width: 610px;
 }
 
 #diferenciais .container {
@@ -897,7 +933,7 @@ header .hero-img .logo-animada .logo-estatica img {
 .dif-content h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--silver);
     margin-bottom: 0.5rem;
 }
 
@@ -1065,7 +1101,7 @@ header .hero-img .logo-animada .logo-estatica img {
 /* ═══════════════════════════
     MEDOS / OBJEÇÕES
 ═══════════════════════════ */
-#garantias {
+/* #garantias {
     background: var(--onyx-soft);
     padding: 6rem 0;
 }
@@ -1155,7 +1191,7 @@ header .hero-img .logo-animada .logo-estatica img {
         right: -100px;
         transform: none;
     }
-}
+} */
 
 /* ═══════════════════════════
     DEPOIMENTOS
@@ -1319,7 +1355,7 @@ header .hero-img .logo-animada .logo-estatica img {
 
 .review-name {
     font-weight: 600;
-    color: #fff;
+    color: var(--silver);
 }
 
 .review-source {
@@ -1338,14 +1374,14 @@ header .hero-img .logo-animada .logo-estatica img {
     height: 100%;
     display: grid;
     place-items: center;
-    color: #fff;
+    color: var(--silver);
     background: rgba(255, 255, 255, 0.08);
     font-weight: 700;
 }
 
 .carousel-control {
     background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    color: var(--silver);
     border: none;
     width: 44px;
     height: 44px;
@@ -1392,7 +1428,7 @@ header .hero-img .logo-animada .logo-estatica img {
 }
 
 .cta-banner h2 {
-    color: #fff;
+    color: var(--silver);
     font-size: clamp(1.4rem, 2.5vw, 1.9rem);
     margin-bottom: 0.8rem;
 }
@@ -1448,7 +1484,7 @@ header .hero-img .logo-animada .logo-estatica img {
     flex-direction: row;
     align-items: center;
     gap: .5rem;
-    background: #fff;
+    background: var(--silver);
     border: 1px solid var(--silver-mid);
     padding: .5rem 1rem;
     font-size: 0.88rem;
@@ -1467,7 +1503,7 @@ header .hero-img .logo-animada .logo-estatica img {
 /* ═══════════════════════════
     CTA FINAL
 ═══════════════════════════ */
-#cta-final {
+/* #cta-final {
     background: var(--onyx);
     padding: 6rem 0;
     text-align: center;
@@ -1475,7 +1511,7 @@ header .hero-img .logo-animada .logo-estatica img {
 
 #cta-final h2 {
     width: 800px;
-    color: #fff;
+    color: var(--silver);
     margin: 0 auto 1rem;
 }
 
@@ -1497,7 +1533,7 @@ header .hero-img .logo-animada .logo-estatica img {
     #cta-final h2 {
         width: 100%;
     }
-}
+} */
 
 /* ═══════════════════════════
     FOOTER
