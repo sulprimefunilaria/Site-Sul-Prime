@@ -157,9 +157,9 @@ section {
     height: 30px;
 }
 
-@media (max-width: 426px) {
+@media (max-width:768px) {
     .container {
-        width: 375px;
+        width: calc(100% - 2rem);
     }
 
     .btn-primary,
@@ -371,7 +371,7 @@ header .hero-img .logo-animada .logo-estatica img {
     object-fit: contain;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     header .label {
         font-size: .55rem;
         margin-left: 0;
@@ -566,7 +566,7 @@ header .hero-img .logo-animada .logo-estatica img {
     font-weight: 400;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     #dor .header {
         gap: 1rem;
     }
@@ -780,7 +780,7 @@ header .hero-img .logo-animada .logo-estatica img {
     line-height: 1.6;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     #servicos .titulo {
         width: 100%;
     }
@@ -840,7 +840,7 @@ header .hero-img .logo-animada .logo-estatica img {
     letter-spacing: 0.08em;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     .numeros-grid {
         display: flex;
         flex-direction: column;
@@ -943,7 +943,7 @@ header .hero-img .logo-animada .logo-estatica img {
     line-height: 1.6;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     #diferenciais .header {
         flex-direction: column;
         align-items: flex-start;
@@ -1064,7 +1064,7 @@ header .hero-img .logo-animada .logo-estatica img {
     gap: 1.5rem;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     #sobre .container {
         flex-direction: column-reverse;
         gap: 3rem;
@@ -1175,7 +1175,7 @@ header .hero-img .logo-animada .logo-estatica img {
     color: var(--gold);
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     #garantias .garantias {
         flex-direction: column;
     }
@@ -1416,6 +1416,12 @@ header .hero-img .logo-animada .logo-estatica img {
     background: var(--gold);
 }
 
+@media (max-width:768px) {
+    #depoimentos .cta-banner-btns a {
+        font-size: .75rem;
+    }
+}
+
 /* ═══════════════════════════
     CTA INTERMEDIÁRIO
 ═══════════════════════════ */
@@ -1529,7 +1535,7 @@ header .hero-img .logo-animada .logo-estatica img {
     flex-wrap: wrap;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     #cta-final h2 {
         width: 100%;
     }
@@ -1610,7 +1616,7 @@ footer a {
     gap: 1rem;
 }
 
-@media (max-width:426px) {
+@media (max-width:768px) {
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
